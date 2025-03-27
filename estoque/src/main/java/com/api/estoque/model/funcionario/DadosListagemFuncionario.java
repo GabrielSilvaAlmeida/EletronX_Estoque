@@ -2,7 +2,6 @@ package com.api.estoque.model.funcionario;
 
 public record DadosListagemFuncionario(
     String id,
-    String username,
     String nome,
     String cargo,
     String password,
@@ -10,7 +9,7 @@ public record DadosListagemFuncionario(
 ) {
 
     public DadosListagemFuncionario(Funcionario funcionario) {
-        this(funcionario.getId(), funcionario.getUsername(), funcionario.getNome(), funcionario.getCargo(), funcionario.getPassword(), funcionario.getEmail());
+        this(funcionario.getId(), funcionario.getNome(), funcionario.getCargo(), funcionario.getPassword(), funcionario.getEmail());
     }
     
 }

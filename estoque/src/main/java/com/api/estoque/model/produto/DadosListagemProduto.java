@@ -5,16 +5,16 @@ import java.time.LocalDateTime;
 public record DadosListagemProduto(
     String id,
     String nomeProduto,
+    String categoria,
     String codigoProduto,
     String marcaProduto,
-    int quantidadeEmEstoque,
+    String quantidadeEmEstoque,
     String modeloProduto,
-    String numeroSerieProduto,
     LocalDateTime dataHoraAtualizacao
 ) {
 
     public DadosListagemProduto(Produto produto) {
-        this(produto.getId(), produto.getNomeProduto(), produto.getCodigoProduto(), produto.getMarcaProduto(), produto.getQuantidadeEmEstoque(), produto.getModeloProduto(), produto.getNumeroSerieProduto(), produto.getDataHoraAtualizacao());
+        this(produto.getId(), produto.getNomeProduto(), produto.getCategoria(), produto.getCodigoProduto(), produto.getMarcaProduto(), produto.getQuantidadeEmEstoque(), produto.getModeloProduto(), produto.getDataHoraAtualizacao());
     }
     
 }

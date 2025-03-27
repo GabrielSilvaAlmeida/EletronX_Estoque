@@ -6,7 +6,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
-
 import com.api.estoque.filter.RateLimitFilter;
 
 import jakarta.servlet.Filter;
@@ -20,7 +19,7 @@ public class SecurityConfig {
     
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
-        http
+       return http
             .csrf(csrf -> csrf
             .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
             .ignoringRequestMatchers("/api/estoque/registro-funcionario", "/api/estoque/produto/registro-produto")
@@ -29,13 +28,14 @@ public class SecurityConfig {
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/api/estoque/registro").permitAll()
                 .requestMatchers("/api/estoque/**").permitAll()
-                .anyRequest().permitAll()
+                .anyRequest().authenticated()
+ 
+                
                 )
-                .formLogin(form -> form.disable())
-                .httpBasic(httpBasic -> httpBasic.disable());
-
-            return http.build();
+                .formLogin(f -> f.disable())
+                .build();
     }
+    
 
     @Bean
     public PasswordEncoder passwordEncoder() {

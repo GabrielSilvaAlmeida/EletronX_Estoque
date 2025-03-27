@@ -29,27 +29,24 @@ public class Produto {
     private String nomeProduto;
     private String codigoProduto;
     private String marcaProduto;
-    private int quantidadeEmEstoque;
+    private String quantidadeEmEstoque;
     private String modeloProduto;
-    private String numeroSerieProduto;
+    private String categoria;
     private LocalDateTime dataHoraAtualizacao;
 
     public Produto(DadosCadastroProduto dados) {
         this.nomeProduto = dados.nomeProduto();
+        this.categoria = dados.categoria();
         this.codigoProduto = dados.codigoProduto();
         this.quantidadeEmEstoque = dados.quantidadeEmEstoque();
         this.marcaProduto = dados.marcaProduto();
         this.modeloProduto = dados.modeloProduto();
-        this.numeroSerieProduto = dados.numeroSerieProduto();
         this.dataHoraAtualizacao = LocalDateTime.now();
     }
 
 
     public void atualizarProduto (DadosAtualizarProduto dados) {
-        if (dados.quantidadeEmEstoque() != 0) {
-            this.quantidadeEmEstoque = dados.quantidadeEmEstoque();
-        }
-
+      
         if (dados.dataHoraAtualizacao() != null) {
             this.dataHoraAtualizacao = LocalDateTime.now();
 

@@ -20,14 +20,12 @@ public class FuncionarioService {
 
     public Funcionario registrarFuncionario(FuncionarioDTO dto) {
             
-        String usernameSanitizado = Jsoup.clean(dto.getUsername(), Safelist.none());
         String emailSanitizado = Jsoup.clean(dto.getEmail(), Safelist.none());
         String nomeSanitizado = Jsoup.clean(dto.getNome(), Safelist.none());
         String cargoSanitizado = Jsoup.clean(dto.getCargo(), Safelist.none());
         
 
         Funcionario funcionario = new Funcionario();
-        funcionario.setUsername(usernameSanitizado);
         funcionario.setNome(nomeSanitizado);
         funcionario.setCargo(cargoSanitizado);
         funcionario.setEmail(emailSanitizado);
